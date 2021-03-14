@@ -1,0 +1,54 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+html{
+    font-size: 62.5%;
+}
+body {
+    box-sizing: border-box;
+    font-size: 1.6rem;
+    font-family: helvetica;
+    font-weight: normal;
+}
+button {
+    font-size: inherit;
+}
+.accordian {
+    &__btn {
+        display: inline-block;
+        width: 100%;
+        padding: 2rem;
+        text-align: left;
+        border: none;
+        outline: none;
+        background-color: #333;
+        color: #fff;
+        &:hover {
+            background-color: #555;
+        }
+        &::after {
+            content: "\002B";
+            float: right;
+        }
+    }
+    &__panel {
+        overflow: hidden;
+        background-color: #eee;
+        max-height: 0;
+        transition: all .5s cubic-bezier(0,1,0,1);
+    }
+    &__btn.active {
+        background-color: #555;
+        &::after {
+            content: "\2212";
+        }
+    }
+    &__btn.active + &__panel {
+        max-height: 7rem;
+        padding: 2rem;
+    }
+}
